@@ -1,5 +1,5 @@
 import { id } from "../helpers/index.js";
-import { connection } from "../Database/index.js";
+import { connection } from "../database/index.js";
 
 export const getAllCustomerInteractionsService = async () => {
   try {
@@ -19,7 +19,7 @@ export const getCustomerInteractionByIdService = async (id) => {
       .select("*")
       .from("customer_interactions")
       .where({ id })
-    
+      .first();
 
     if (res.length >= 1) return res;
 
@@ -44,7 +44,7 @@ export const createCustomerInteractionService = async ({
 
     return "Customer interaction yaratildi";
   } catch (error) {
-    return error.message;
+    return error;
   }
 };
 

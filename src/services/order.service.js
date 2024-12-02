@@ -1,5 +1,5 @@
 import { id } from "../helpers/index.js";
-import { connection } from "../Database/index.js";
+import { connection } from "../database/index.js";
 
 
 export const getAllOrdersService = async () => {
