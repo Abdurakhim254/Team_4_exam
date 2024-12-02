@@ -12,6 +12,7 @@ export const CheckAddressDatamiddleware = (schema) => {
       zip_code,
       country,
     } = req.body;
+
     const { error } = schema.validate({
       customer_id,
       address_type,
@@ -22,6 +23,7 @@ export const CheckAddressDatamiddleware = (schema) => {
       zip_code,
       country,
     });
+
     if (error) {
       return res.status(statusCodes.bad).send("Ma'lumot to'liqmas");
     } else {
@@ -33,6 +35,7 @@ export const CheckAddressDatamiddleware = (schema) => {
 export const UpdateAddressDatamiddleware = (schema) => {
   return (req, res, next) => {
     const { id } = req.params;
+
     const {
       customer_id,
       address_type,
@@ -43,6 +46,7 @@ export const UpdateAddressDatamiddleware = (schema) => {
       zip_code,
       country,
     } = req.body;
+
     const { error } = schema.validate({
       id,
       customer_id,
@@ -54,6 +58,7 @@ export const UpdateAddressDatamiddleware = (schema) => {
       zip_code,
       country,
     });
+
     if (error) {
       return res.status(statusCodes.bad).send("Ma'lumot to'liqmas");
     } else {

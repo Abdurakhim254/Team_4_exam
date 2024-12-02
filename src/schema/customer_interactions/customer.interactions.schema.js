@@ -12,10 +12,10 @@ export const createCustomerInteractionsTable = async () => {
             .inTable("customer")
             .onDelete("CASCADE")
             .onUpdate("CASCADE")
-            .notNullable(),
-          table.timestamp("interaction_date").defaultTo(connection.fn.now()),
-          table.enu("type", ["email", "call", "meeting"]),
-          table.string("notes").notNullable();
+            .notNullable();
+        table.enu("type", ["email", "call", "meeting"]);
+        table.string("notes").notNullable();
+        table.timestamp("interaction_date").defaultTo(connection.fn.now());
       });
       logger.info("Table yaratildi");
     } else {

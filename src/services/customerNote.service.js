@@ -5,7 +5,7 @@ export const getAllCustomerNotesService = async () => {
   try {
     const res = await connection.select("*").from("customer_notes");
 
-    if (res && res.length >= 1) return res;
+    if (res.length >= 1) return res;
 
     return "Customer notelar topilmadi!";
   } catch (error) {
