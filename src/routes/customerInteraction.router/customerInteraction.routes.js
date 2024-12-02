@@ -1,5 +1,5 @@
 import express from "express";
-import { authGuard, roleGuard } from "../../Guards/index.js";
+import { authGuard, roleGuard } from "../../guards/index.js";
 import { customerInteractionObj } from "../../controllers/index.js";
 import { customerInteractionValidationSchema } from "../../validations/index.js";
 import {
@@ -11,10 +11,12 @@ export const customerInteractionRouter = express.Router();
 
 customerInteractionRouter.get(
   "/",
+  authGuard,
   customerInteractionObj.getAllCustomerInteractionsCon
 );
 customerInteractionRouter.get(
   "/:id",
+  authGuard,
   customerInteractionObj.getCustomerInteractionByIdCon
 );
 customerInteractionRouter.post(

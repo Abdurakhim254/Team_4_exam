@@ -1,9 +1,9 @@
 import express from "express";
 import { feedbackObj } from "../../controllers/index.js";
-import { authGuard, roleGuard } from "../../Guards/index.js";
+import { authGuard, roleGuard } from "../../guards/index.js";
 import {
-  feedbackValidationSchema,
-  updateFeedbackValidationSchema
+  createFeedbackValidationSchema,
+  updateFeedbackValidationSchema,
 } from "../../validations/index.js";
 import {
   checkFeedbackDatamiddleware,
@@ -12,12 +12,12 @@ import {
 
 export const feedbackRouter = express.Router();
 
-feedbackRouter.get("/", feedbackObj.getAllFeedbacksCon);
-feedbackRouter.get("/:id", feedbackObj.getFeedbackByIdCon);
+feedbackRouter.get("/", authGuard, feedbackObj.getAllFeedbacksCon);
+feedbackRouter.get("/:id", authGuard, feedbackObj.getFeedbackByIdCon);
 feedbackRouter.post(
   "/",
   authGuard,
-  checkFeedbackDatamiddleware(feedbackValidationSchema),
+  checkFeedbackDatamiddleware(createFeedbackValidationSchema),
   feedbackObj.createFeedbackCon
 );
 feedbackRouter.put(

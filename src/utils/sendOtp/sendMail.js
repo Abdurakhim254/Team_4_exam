@@ -21,9 +21,9 @@ export const sendMail = async (email, otp) => {
       },
       function (error, info) {
         if (error) {
-          console.error(error);
+          logger.error(error);
         } else {
-          console.log(info);
+          logger.silly(info);
         }
       }
     );

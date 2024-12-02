@@ -1,6 +1,6 @@
 import express from "express";
 import { customerNoteObj } from "../../controllers/index.js";
-import { authGuard, roleGuard } from "../../Guards/index.js";
+import { authGuard, roleGuard } from "../../guards/index.js";
 import { customerNotesValidationSchema } from "../../validations/index.js";
 import {
   CheckCustomerNotesDatamiddleware,
@@ -9,8 +9,12 @@ import {
 
 export const customerNoteRouter = express.Router();
 
-customerNoteRouter.get("/", customerNoteObj.getAllCustomerNotesCon);
-customerNoteRouter.get("/:id", customerNoteObj.getCustomerNoteByIdCon);
+customerNoteRouter.get("/", authGuard, customerNoteObj.getAllCustomerNotesCon);
+customerNoteRouter.get(
+  "/:id",
+  authGuard,
+  customerNoteObj.getCustomerNoteByIdCon
+);
 customerNoteRouter.post(
   "/",
   authGuard,

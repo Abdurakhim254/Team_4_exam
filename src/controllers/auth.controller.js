@@ -7,6 +7,7 @@ import {
   getAllCustomersService,
   logOutService,
   profileService,
+  refreshTokenService,
   sendOtpService,
 } from "../services/index.js";
 
@@ -120,7 +121,7 @@ export const authObj = {
   refreshTokenCon: async function (req, res) {
     try {
       const [type, token] = req.headers.authorization.split(" ");
-      const result = await RefreshtokenService([type, token]);
+      const result = await refreshTokenService([type, token]);
 
       res.status(ok).send(result);
     } catch (error) {

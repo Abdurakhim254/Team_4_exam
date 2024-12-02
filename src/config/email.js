@@ -1,8 +1,8 @@
-import dotenv from 'dotenv'
+import dotenv from "dotenv";
 
-dotenv.config()
+dotenv.config();
 
-export const email_info={
-    user:process.env.USER,
-    pass:process.env.PASS
-}
+export const email_info = {
+  user: process.env.USER,
+  pass: process.env.PASS,
+};
