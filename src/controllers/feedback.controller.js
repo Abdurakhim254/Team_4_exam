@@ -1,74 +1,90 @@
-import {statusCodes} from "../config/index.js"
-import {getAllfeedBackService,getfeedBackByidService,createFeedbackService,UpdatefeedbackService,deletefeedbackService} from "../services/index.js"
+import { statusCodes } from "../config/index.js";
+import {
+  getAllFeedbacksService,
+  getFeedbackByIdService,
+  createFeedbackService,
+  updateFeedbackByIdService,
+  deleteFeedbackByIdService,
+} from "../services/index.js";
+import { logger } from "../utils/index.js";
 
-const ok=statusCodes.ok
-const not_found=statusCodes.not_found
-const medium=statusCodes.medium
-const bad=statusCodes.bad
-const created=statusCodes.created
+const ok = statusCodes.ok;
+const not_found = statusCodes.not_found;
+const medium = statusCodes.medium;
+const bad = statusCodes.bad;
+const created = statusCodes.created;
 
+export const feedbackObj = {
+  getAllFeedbacksCon: async function (req, res) {
+    try {
+      const result = await getAllFeedbacksService();
 
-export const feedbackObj={
-    getAllFedbacksCon:async function(req,res){
-        try {
-            const {PAGE,LIMIT}=req.query
-            const result=await getAllfeedBackService()
-            if(PAGE>0 || LIMIT>0){
-                const data=await paginate_function(result,PAGE,LIMIT)
-                return res.status(200).send(data)
-            }
-            return res.status(ok).send(result)
-        } catch (error) {
-            res.status(bad).send(error.message)
-        }
+      res.status(ok).send(result);
+    } catch (error) {
+      logger.error(error);
+      res.status(bad).send(error.message);
     }
+  },
 
-    ,
+  getFeedbackByIdCon: async function (req, res) {
+    try {
+      const { id } = req.params;
 
-    getFedbackByIdCon:async function(req,res){
-        try {
-            const {id}=req.params
-            const result=await getfeedBackByidService(id)
-            res.status(ok).send(result)
-        } catch (error) {
-            res.status(bad).send(error.message)
-        }
+      const result = await getFeedbackByIdService(id);
+
+      res.status(ok).send(result);
+    } catch (error) {
+      logger.error(error);
+      res.status(bad).send(error.message);
     }
+  },
 
-    ,
+  createFeedbackCon: async function (req, res) {
+    try {
+      const { customer_id, submitted_at, feedback_type, content } = req.body;
 
-    CreateFedbackCon:async function(req,res){
-        try {
-            const {customer_id,submitted_at,feedback_type,content}=req.body
-            const result=await createFeedbackService({customer_id,submitted_at,feedback_type,content})
-            res.status(ok).send(result)
-        } catch (error) {
-            res.status(bad).send(error.message)
-        }
+      const result = await createFeedbackService({
+        customer_id,
+        submitted_at,
+        feedback_type,
+        content,
+      });
+
+      res.status(created).send(result);
+    } catch (error) {
+      logger.error(error);
+      res.status(bad).send(error.message);
     }
+  },
 
-    ,
+  updateFeedbackByIdCon: async function (req, res) {
+    try {
+      const { id } = req.params;
+      const { customer_id, submitted_at, feedback_type, content } = req.body;
+      const result = await updateFeedbackByIdService({
+        id,
+        customer_id,
+        submitted_at,
+        feedback_type,
+        content,
+      });
 
-    UpdateFedbackCon:async function(req,res){
-        try {
-            const {id}=req.params
-            const {customer_id,submitted_at,feedback_type,content}=req.body
-            const result=await UpdatefeedbackService({id,customer_id,submitted_at,feedback_type,content})
-            res.status(ok).send(result)
-        } catch (error) {
-            res.status(bad).send(error.message)
-        }
+      res.status(ok).send(result);
+    } catch (error) {
+      logger.error(error);
+      res.status(bad).send(error.message);
     }
+  },
 
-    ,
+  deleteFeedbackByIdCon: async function (req, res) {
+    try {
+      const { id } = req.params;
+      const result = await deleteFeedbackByIdService(id);
 
-    deleteFedbackCon:async function(req,res){
-        try {
-            const {id}=req.params
-            const result=await deletefeedbackService(id)
-            res.status(ok).send(result)
-        } catch (error) {
-            res.status(bad).send(error.message)
-        }
+      res.status(ok).send(result);
+    } catch (error) {
+      logger.error(error);
+      res.status(bad).send(error.message);
     }
-}
+  },
+};

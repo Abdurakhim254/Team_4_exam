@@ -1,11 +1,16 @@
-import express from "express"
-import {authRouter, feedbackRouter,customerInteractionRouter,customerNoteRouter, orderRouter, userRouter} from "./router.export.js"
+import express from "express";
+import {
+  authRouter,
+  customerInteractionRouter,
+  customerNoteRouter,
+  feedbackRouter,
+  orderRouter,
+} from "./router.export.js";
 
-export const mainRouter=express.Router()
+export const mainRouter = express.Router();
 
-mainRouter.use("/auth",authRouter)
-mainRouter.use("/user",userRouter)
-mainRouter.use("/order",orderRouter)
+mainRouter.use("/auth", authRouter);
+mainRouter.use("/feedback", feedbackRouter);
+mainRouter.use("/order", orderRouter);
 mainRouter.use("/customerInteraction", customerInteractionRouter);
 mainRouter.use("/customerNote", customerNoteRouter);
-mainRouter.use("/feedback",feedbackRouter)

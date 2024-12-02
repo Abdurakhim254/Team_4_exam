@@ -1,10 +1,10 @@
 import { logger } from "../../utils/index.js";
 import { connection } from "../../database/index.js";
 
-export const createCustomNotestTable = async () => {
+export const createFeedbackTable = async () => {
   try {
-    if (!(await connection.schema.hasTable("custom_notes"))) {
-      await connection.schema.createTable("custom_notes", (table) => {
+    if (!(await connection.schema.hasTable("feedback"))) {
+      await connection.schema.createTable("feedback", (table) => {
         table.uuid("id").primary();
         table
           .uuid("customer_id")
@@ -13,8 +13,9 @@ export const createCustomNotestTable = async () => {
           .onDelete("CASCADE")
           .onUpdate("CASCADE")
           .notNullable();
+        table.date("submitted_at").defaultTo(connection.fn.now());
+        table.enu("feedback_type", ["complaint", "suggestion", "praise"]);
         table.string("content").notNullable();
-        table.timestamp("created_at").defaultTo(connection.fn.now());
       });
       logger.info("Table yaratildi");
     } else {
