@@ -20,3 +20,131 @@
 [32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T18:36:26.266Z"}[39m
 [32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T18:37:03.925Z"}[39m
 [32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T18:37:23.822Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T19:00:48.342Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T19:01:39.202Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T19:03:59.640Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T19:04:52.370Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T19:10:06.018Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T19:10:15.592Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T19:16:29.874Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T19:17:38.188Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T19:20:09.005Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T19:20:35.053Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T19:23:24.822Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T19:23:43.044Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T19:31:27.954Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T19:33:16.717Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T19:35:56.431Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T19:36:31.558Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T19:37:48.261Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T20:26:04.182Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T20:26:45.243Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T20:27:03.802Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T20:27:20.841Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T20:27:40.775Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T20:27:50.461Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T20:28:08.589Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T20:28:26.296Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T20:28:43.769Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T20:47:14.500Z"}[39m
+[32m{"level":"info","message":"Table allaqachon yaratilgan","timestamp":"2024-12-02T20:48:32.549Z"}[39m
+[32m{"level":"info","message":"Table allaqachon yaratilgan","timestamp":"2024-12-02T20:48:32.551Z"}[39m
+[32m{"level":"info","message":"Table allaqachon yaratilgan","timestamp":"2024-12-02T20:48:32.551Z"}[39m
+[32m{"level":"info","message":"Table allaqachon yaratilgan","timestamp":"2024-12-02T20:48:32.552Z"}[39m
+[32m{"level":"info","message":"Table allaqachon yaratilgan","timestamp":"2024-12-02T20:48:32.553Z"}[39m
+[32m{"level":"info","message":"Table allaqachon yaratilgan","timestamp":"2024-12-02T20:48:32.554Z"}[39m
+[32m{"level":"info","message":"Table allaqachon yaratilgan","timestamp":"2024-12-02T20:48:32.555Z"}[39m
+[32m{"level":"info","message":"Table allaqachon yaratilgan","timestamp":"2024-12-02T20:48:32.556Z"}[39m
+[32m{"level":"info","message":"Table allaqachon yaratilgan","timestamp":"2024-12-02T20:48:32.557Z"}[39m
+[32m{"level":"info","message":"Table allaqachon yaratilgan","timestamp":"2024-12-02T20:48:32.558Z"}[39m
+[32m{"level":"info","message":"Table allaqachon yaratilgan","timestamp":"2024-12-02T20:48:32.559Z"}[39m
+[31m{"code":"EAUTH","command":"AUTH PLAIN","level":"error","response":"535-5.7.8 Username and Password not accepted. For more information, go to\n535 5.7.8  https://support.google.com/mail/?p=BadCredentials 2adb3069b0e04-53df6431040sm1614819e87.17 - gsmtp","responseCode":535,"timestamp":"2024-12-02T20:51:20.800Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T20:54:01.785Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T20:54:31.267Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T20:54:38.343Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T20:55:05.692Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T20:55:20.835Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T20:56:29.436Z"}[39m
+[32m{"level":"info","message":"Table allaqachon yaratilgan","timestamp":"2024-12-02T20:56:39.996Z"}[39m
+[32m{"level":"info","message":"Table allaqachon yaratilgan","timestamp":"2024-12-02T20:56:39.997Z"}[39m
+[32m{"level":"info","message":"Table allaqachon yaratilgan","timestamp":"2024-12-02T20:56:39.998Z"}[39m
+[32m{"level":"info","message":"Table allaqachon yaratilgan","timestamp":"2024-12-02T20:56:39.999Z"}[39m
+[32m{"level":"info","message":"Table yaratildi","timestamp":"2024-12-02T20:56:40.017Z"}[39m
+[32m{"level":"info","message":"Table allaqachon yaratilgan","timestamp":"2024-12-02T20:56:40.019Z"}[39m
+[32m{"level":"info","message":"Table allaqachon yaratilgan","timestamp":"2024-12-02T20:56:40.020Z"}[39m
+[32m{"level":"info","message":"Table allaqachon yaratilgan","timestamp":"2024-12-02T20:56:40.021Z"}[39m
+[32m{"level":"info","message":"Table allaqachon yaratilgan","timestamp":"2024-12-02T20:56:40.022Z"}[39m
+[32m{"level":"info","message":"Table allaqachon yaratilgan","timestamp":"2024-12-02T20:56:40.023Z"}[39m
+[32m{"level":"info","message":"Table allaqachon yaratilgan","timestamp":"2024-12-02T20:56:40.024Z"}[39m
+[31m{"level":"error","timestamp":"2024-12-02T20:56:57.038Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T20:57:41.051Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T21:01:08.343Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T21:02:51.151Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T21:04:34.532Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T21:05:09.492Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T21:08:00.994Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T21:09:00.909Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T21:09:26.239Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T21:09:47.853Z"}[39m
+[31m{"level":"error","timestamp":"2024-12-02T21:10:22.980Z"}[39m
+[31m{"level":"error","timestamp":"2024-12-02T21:12:16.495Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T21:14:17.350Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T21:16:45.703Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T21:20:32.489Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T21:21:35.649Z"}[39m
+[31m{"level":"error","timestamp":"2024-12-02T21:21:37.238Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T21:21:59.607Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T21:22:46.633Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T21:23:39.390Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T21:26:36.854Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T21:29:00.713Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T21:29:24.278Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T21:30:31.547Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T21:31:03.054Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T21:31:20.564Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T21:31:40.668Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T21:32:25.727Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T21:34:57.598Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T21:38:43.339Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T21:39:23.024Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T21:40:06.860Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T21:42:17.057Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T21:45:09.255Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T21:45:56.537Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T21:46:57.978Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T21:48:46.947Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T21:49:12.722Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T21:49:16.536Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T21:51:04.772Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T21:52:01.870Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T21:53:00.350Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T21:53:12.836Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T21:53:43.579Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T21:53:55.770Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T22:00:05.546Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T22:04:55.105Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T22:06:59.419Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T22:09:18.707Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T22:09:51.462Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T22:10:03.270Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T22:12:27.537Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T22:12:38.781Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T22:14:01.233Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T22:14:22.980Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T22:17:57.654Z"}[39m
+[31m{"level":"error","timestamp":"2024-12-02T22:18:16.917Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T22:18:42.993Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T22:21:33.906Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T22:22:13.181Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T22:22:36.705Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T22:22:48.030Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T22:23:24.736Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T22:23:58.982Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T22:24:09.717Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T22:27:34.150Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T22:31:38.049Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T22:32:06.586Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T22:35:19.210Z"}[39m
+[31m{"level":"error","timestamp":"2024-12-02T22:35:36.113Z"}[39m
+[31m{"level":"error","timestamp":"2024-12-02T22:35:58.304Z"}[39m
+[32m{"level":"info","message":"Server is running on port 3000","timestamp":"2024-12-02T22:37:06.722Z"}[39m

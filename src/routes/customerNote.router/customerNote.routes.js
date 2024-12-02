@@ -1,7 +1,10 @@
 import express from "express";
 import { customerNoteObj } from "../../controllers/index.js";
 import { authGuard, roleGuard } from "../../guards/index.js";
-import { customerNotesValidationSchema } from "../../validations/index.js";
+import {
+  createCustomerNotesValidationSchema,
+  updateCustomerNotesValidationSchema,
+} from "../../validations/index.js";
 import {
   CheckCustomerNotesDatamiddleware,
   UpdateCheckCustomerNotesDatamiddleware,
@@ -18,14 +21,14 @@ customerNoteRouter.get(
 customerNoteRouter.post(
   "/",
   authGuard,
-  CheckCustomerNotesDatamiddleware(customerNotesValidationSchema),
+  CheckCustomerNotesDatamiddleware(createCustomerNotesValidationSchema),
   customerNoteObj.createCustomerNoteCon
 );
 customerNoteRouter.put(
   "/:id",
   authGuard,
   roleGuard(["admin", "manager"]),
-  UpdateCheckCustomerNotesDatamiddleware(customerNotesValidationSchema),
+  UpdateCheckCustomerNotesDatamiddleware(updateCustomerNotesValidationSchema),
   customerNoteObj.updateCustomerNoteByIdCon
 );
 customerNoteRouter.delete(

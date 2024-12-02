@@ -21,9 +21,9 @@ export const getCustomerInteractionByIdService = async (id) => {
       .where({ id })
       .first();
 
-    if (res.length >= 1) return res;
+    if (!res) return "Customer interaction topilmadi!";
 
-    return "Customer interaction topilmadi!";
+    return res;
   } catch (error) {
     return error;
   }

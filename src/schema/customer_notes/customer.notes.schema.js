@@ -3,8 +3,8 @@ import { connection } from "../../database/index.js";
 
 export const createCustomNotestTable = async () => {
   try {
-    if (!(await connection.schema.hasTable("custom_notes"))) {
-      await connection.schema.createTable("custom_notes", (table) => {
+    if (!(await connection.schema.hasTable("customer_notes"))) {
+      await connection.schema.createTable("customer_notes", (table) => {
         table.uuid("id").primary();
         table
           .uuid("customer_id")

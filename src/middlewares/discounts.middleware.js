@@ -4,6 +4,7 @@ export const CheckdiscountDatamiddleware = (schema) => {
   return (req, res, next) => {
     const { product_id, code, description, discount_type, expiration_date } =
       req.body;
+
     const { error } = schema.validate({
       product_id,
       code,
@@ -11,6 +12,7 @@ export const CheckdiscountDatamiddleware = (schema) => {
       discount_type,
       expiration_date,
     });
+
     if (error) {
       return res.status(statusCodes.bad).send("Ma'lumot to'liqmas");
     } else {
@@ -22,8 +24,10 @@ export const CheckdiscountDatamiddleware = (schema) => {
 export const UpdateCheckdiscountDatamiddleware = (schema) => {
   return (req, res, next) => {
     const { id } = req.params;
+
     const { product_id, code, description, discount_type, expiration_date } =
       req.body;
+
     const { error } = schema.validate({
       id,
       product_id,
@@ -32,6 +36,7 @@ export const UpdateCheckdiscountDatamiddleware = (schema) => {
       discount_type,
       expiration_date,
     });
+
     if (error) {
       return res.status(statusCodes.bad).send("Ma'lumot to'liqmas");
     } else {

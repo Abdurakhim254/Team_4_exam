@@ -6,3 +6,7 @@ export * from "./customerNote.service.js";
 export * from "./feedback.service.js";
 export * from "./order.service.js";
 export * from "./otp.service.js";
+export * from "./discounts.service.js";
+export * from "./order_item.service.js";
+export * from "./payments.service.js";
+export * from "./products.service.js";
