@@ -1,5 +1,5 @@
-import { connection } from "../database/index.js";
-import {createAccesstoken,decode_jwt,id } from "../helpers/index.js";
+import { connection } from "../Database/index.js";
+import { createAccesstoken, decode_jwt, id } from "../helpers/index.js";
 import {
   otp,
   sendMail,
@@ -59,7 +59,7 @@ export const authRegisterService = async ({
 
       await connection("customer").insert(data);
       await sendMail(email, otp);
-      await saveOtp(otp);
+      await SaveOtp(otp);
 
       return "Ro'yxatdan o'tdingiz.";
     }
@@ -86,7 +86,7 @@ export const authLoginService = async ({ email, password }) => {
             .where({ email })
             .update({ is_active: true });
 
-          const accessToken = await createAccessToken(email, result[0].role);
+          const accessToken = await createAccesstoken(email, result[0].role);
           delete result[0].password;
 
           return { result, accessToken };
@@ -127,7 +127,7 @@ export const authVerifyService = async ({ otp, email }) => {
 export const sendOtpService = async (email) => {
   try {
     await sendMail(email, otp);
-    await saveOtp(otp);
+    await SaveOtp(otp);
 
     return "Email pochtangizga qarang!";
   } catch (error) {
@@ -137,9 +137,9 @@ export const sendOtpService = async (email) => {
 
 export const profileService = async ([type, token]) => {
   try {
-    if (!type == "Bearer" || !token) return "Unauthorization";
+    if (type != "Bearer" || !token) return "Unauthorization";
 
-    const email = await verifyToken(token);
+    const email = await decode_jwt(token);
     const result = await findCustomerByEmailService(email);
 
     return result;
@@ -152,7 +152,7 @@ export const refreshTokenService = async ([type, token]) => {
   try {
     if (!type == "Bearer" || !token) return "Unauthorization";
 
-    const email = await verifyToken(token);
+    const email = await decode_jwt(token);
     const data = await findCustomerByEmailService(email);
 
     const refReshtoken = token;
@@ -170,7 +170,7 @@ export const logOutService = async ([type, token]) => {
   try {
     if (!type == "Bearer" || !token) return "Unauthorization";
 
-    const email = await verifyToken(token);
+    const email = await decode_jwt(token);
     const result = await deleteCustomerByEmailService(email);
 
     return result;
