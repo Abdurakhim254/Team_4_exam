@@ -1,5 +1,5 @@
-import { connection } from "../Database/index.js";
-import { createAccesstoken, decode_jwt, id } from "../helpers/index.js";
+import { connection } from "../database/index.js";
+import { createAccessToken, decode_jwt, createId } from "../helpers/index.js";
 import {
   otp,
   sendMail,
@@ -7,9 +7,9 @@ import {
   comparePassword,
 } from "../utils/index.js";
 import {
-  SaveOtp,
+  saveOtp,
   deleteOtp,
-  findByotp,
+  findByOtp,
   findCustomerByEmailService,
   deleteCustomerByEmailService,
   activateCustomerAccountService,
@@ -25,26 +25,15 @@ export const authRegisterService = async ({
   date_of_birth,
 }) => {
   try {
-    if (role) {
-      var data = {
-        first_name,
-        last_name,
-        email,
-        password,
-        role,
-        phone,
-        date_of_birth,
-      };
-    } else {
-      var data = {
-        first_name,
-        last_name,
-        email,
-        password,
-        phone,
-        date_of_birth,
-      };
-    }
+    var data = {
+      first_name,
+      last_name,
+      email,
+      password,
+      role,
+      phone,
+      date_of_birth,
+    };
 
     const result = await connection
       .select("*")
@@ -54,12 +43,12 @@ export const authRegisterService = async ({
     if (!result || result.length >= 1) {
       return "Foydalanuvchi allaqachon ro'yxatdan o'tgan!";
     } else {
-      data.password = await hashPassword(data.password);
-      data.id = id;
+      data.password = await hashPassword(password);
+      data.id = createId;
 
       await connection("customer").insert(data);
       await sendMail(email, otp);
-      await SaveOtp(otp);
+      await saveOtp(otp);
 
       return "Ro'yxatdan o'tdingiz.";
     }
@@ -81,12 +70,13 @@ export const authLoginService = async ({ email, password }) => {
 
       if (isequal) {
         if (!result[0].is_active) {
-          await connection
-            .table("customer")
-            .where({ email })
-            .update({ is_active: true });
+          // await connection
+          //   .table("customer")
+          //   .where({ email })
+          //   .update({ is_active: true });
+          await activateCustomerAccountService(email);
 
-          const accessToken = await createAccesstoken(email, result[0].role);
+          const accessToken = await createAccessToken(email, result[0].role);
           delete result[0].password;
 
           return { result, accessToken };
@@ -109,7 +99,7 @@ export const authVerifyService = async ({ otp, email }) => {
     if (result[0].is_active) {
       return "Akkountingiz statusi joyida.";
     } else {
-      const otpData = await findByotp(otp);
+      const otpData = await findByOtp(otp);
       if (otpData) {
         await deleteOtp(otp);
         await activateCustomerAccountService(email);
@@ -127,7 +117,7 @@ export const authVerifyService = async ({ otp, email }) => {
 export const sendOtpService = async (email) => {
   try {
     await sendMail(email, otp);
-    await SaveOtp(otp);
+    await saveOtp(otp);
 
     return "Email pochtangizga qarang!";
   } catch (error) {
@@ -158,7 +148,7 @@ export const refreshTokenService = async ([type, token]) => {
     const refReshtoken = token;
     const role = data[0].role;
 
-    const accessToken = createAccesstoken(email, role);
+    const accessToken = createAccessToken(email, role);
 
     return { accessToken, refReshtoken };
   } catch (error) {

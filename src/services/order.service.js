@@ -1,5 +1,5 @@
-import { id } from "../helpers/index.js";
-import { connection } from "../Database/index.js";
+import { createId } from "../helpers/index.js";
+import { connection } from "../database/index.js";
 
 export const getAllOrdersService = async () => {
   try {
@@ -33,7 +33,7 @@ export const createOrderService = async ({
 }) => {
   try {
     await connection("orders").insert({
-      id,
+      id: createId,
       customer_id,
       order_date,
       status,
@@ -42,7 +42,7 @@ export const createOrderService = async ({
 
     return "Order yaratildi";
   } catch (error) {
-    return error.message;
+    return error;
   }
 };
 
@@ -56,12 +56,13 @@ export const updateOrderByIdService = async ({
   try {
     const result = await connection.select("*").from("orders").where({ id });
 
-    if (result.length >= 1) {
+    if (result && result.length >= 1) {
       await connection
         .select("*")
         .from("orders")
         .where({ id })
         .update({ customer_id, order_date, status, total_amount });
+
       return "Order yangilandi.";
     }
 

@@ -1,4 +1,4 @@
-import { connection } from "../Database/index.js";
+import { connection } from "../database/index.js";
 
 export const getAllCustomersService = async () => {
   try {
@@ -15,7 +15,7 @@ export const getAllCustomersService = async () => {
       ])
       .table("customer");
 
-    if (res.length < 1) return "Xali sotuvchilar mavjud emas!";
+    if (!res || res.length < 1) return "Xali sotuvchilar mavjud emas!";
 
     return res;
   } catch (error) {
@@ -68,7 +68,7 @@ export const activateCustomerAccountService = async (email) => {
       .update({ is_active })
       .returning("*");
 
-    if (res.length >= 1) return "Akkount aktivlashtirildi";
+    if (res && res.length >= 1) return "Akkount aktivlashtirildi";
 
     return "Aktivlashtiriladigan akkount topilmadi!";
   } catch (error) {
