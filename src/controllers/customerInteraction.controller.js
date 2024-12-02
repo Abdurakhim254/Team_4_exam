@@ -41,11 +41,12 @@ export const customerInteractionObj = {
 
   createCustomerInteractionCon: async function (req, res) {
     try {
-      const { customer_id, content } = req.body;
+      const { customer_id, type, notes } = req.body;
 
       const result = await createCustomerInteractionService({
         customer_id,
-        content,
+        type,
+        notes,
       });
 
       res.status(created).send(result);
@@ -58,12 +59,14 @@ export const customerInteractionObj = {
   updateCustomerInteractionByIdCon: async function (req, res) {
     try {
       const { id } = req.params;
-      const { customer_id, content } = req.body;
+
+      const { customer_id, type, notes } = req.body;
 
       const result = await updateCustomerInteractionByIdService({
         id,
         customer_id,
-        content,
+        type,
+        notes,
       });
 
       res.status(ok).send(result);
