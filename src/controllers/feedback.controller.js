@@ -11,13 +11,8 @@ const created=statusCodes.created
 export const feedbackObj={
     getAllFedbacksCon:async function(req,res){
         try {
-            const {PAGE,LIMIT}=req.query
             const result=await getAllfeedBackService()
-            if(PAGE>0 || LIMIT>0){
-                const data=await paginate_function(result,PAGE,LIMIT)
-                return res.status(200).send(data)
-            }
-            return res.status(ok).send(result)
+            res.status(ok).send(result)
         } catch (error) {
             res.status(bad).send(error.message)
         }

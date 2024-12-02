@@ -19,7 +19,7 @@ export const UpdateCustomerInteractionDatamiddleware=(schema)=>{
         const{customer_id,interaction_date,type,notes}=req.body
         const {error}=schema.validate({id,customer_id,interaction_date,type,notes})
         if(error){
-            return   res.status(statusCodes.bad).send("Ma'lumot to'liqmas")
+            return    res.status(statusCodes.bad).send("Ma'lumot to'liqmas")
         }else{
             next()
         }

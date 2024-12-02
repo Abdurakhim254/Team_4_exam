@@ -23,6 +23,7 @@ export const findByotp=async(otp)=>{
     }
 }
 
+
 export const deleteOtp=async(otp)=>{
     try {
         const res=await connection.select("*").from('otp').where({otp}).returning("*").del()

@@ -190,36 +190,22 @@
 [32m{"level":"info","message":"Otp saved","timestamp":"2024-11-29T17:02:07.437Z"}[39m
 [32m{"level":"info","message":"Otp saved","timestamp":"2024-11-29T17:08:18.417Z"}[39m
 [32m{"level":"info","message":"Otp saved","timestamp":"2024-11-29T17:27:55.837Z"}[39m
-[32m{"level":"info","message":"Otp saved","timestamp":"2024-12-01T05:18:57.634Z"}[39m
-[32m{"level":"info","message":"Otp saved","timestamp":"2024-12-01T05:24:46.142Z"}[39m
-[32m{"level":"info","message":"Otp saved","timestamp":"2024-12-01T05:26:13.029Z"}[39m
-[32m{"level":"info","message":"Otp saved","timestamp":"2024-12-01T05:27:43.520Z"}[39m
-[32m{"level":"info","message":"Otp saved","timestamp":"2024-12-01T05:29:29.536Z"}[39m
-[32m{"level":"info","message":"Otp saved","timestamp":"2024-12-01T05:30:34.788Z"}[39m
-[32m{"level":"info","message":"Otp saved","timestamp":"2024-12-01T05:34:00.036Z"}[39m
-[32m{"level":"info","message":"Otp saved","timestamp":"2024-12-01T05:42:50.562Z"}[39m
-[32m{"level":"info","message":"Otp saved","timestamp":"2024-12-01T05:53:22.560Z"}[39m
-[32m{"level":"info","message":"Otp saved","timestamp":"2024-12-01T05:54:48.717Z"}[39m
-[32m{"level":"info","message":"Otp saved","timestamp":"2024-12-01T05:56:07.685Z"}[39m
-[32m{"level":"info","message":"Otp saved","timestamp":"2024-12-01T05:57:02.251Z"}[39m
-[32m{"level":"info","message":"Otp saved","timestamp":"2024-12-01T05:58:24.354Z"}[39m
-[32m{"level":"info","message":"Otp saved","timestamp":"2024-12-01T06:00:50.923Z"}[39m
-[32m{"level":"info","message":"Otp saved","timestamp":"2024-12-01T09:40:44.306Z"}[39m
-[32m{"level":"info","message":"Otp saved","timestamp":"2024-12-01T09:41:39.011Z"}[39m
-[32m{"level":"info","message":"Table yaratildi","timestamp":"2024-12-01T09:48:56.280Z"}[39m
-[32m{"level":"info","message":"Table yaratildi","timestamp":"2024-12-01T09:48:56.310Z"}[39m
-[32m{"level":"info","message":"Table yaratildi","timestamp":"2024-12-01T09:48:56.331Z"}[39m
-[32m{"level":"info","message":"Table yaratildi","timestamp":"2024-12-01T09:48:56.346Z"}[39m
-[32m{"level":"info","message":"Table yaratildi","timestamp":"2024-12-01T09:48:56.360Z"}[39m
-[32m{"level":"info","message":"Table yaratildi","timestamp":"2024-12-01T09:48:56.376Z"}[39m
-[32m{"level":"info","message":"Table yaratildi","timestamp":"2024-12-01T09:48:56.391Z"}[39m
-[32m{"level":"info","message":"Table yaratildi","timestamp":"2024-12-01T09:48:56.407Z"}[39m
-[32m{"level":"info","message":"Table yaratildi","timestamp":"2024-12-01T09:48:56.422Z"}[39m
-[32m{"level":"info","message":"Table yaratildi","timestamp":"2024-12-01T09:48:56.437Z"}[39m
-[32m{"level":"info","message":"Table allaqachon yaratilgan","timestamp":"2024-12-01T09:48:56.441Z"}[39m
-[32m{"level":"info","message":"Otp saved","timestamp":"2024-12-01T10:00:00.431Z"}[39m
-[32m{"level":"info","message":"Otp saved","timestamp":"2024-12-01T10:05:02.925Z"}[39m
-[32m{"level":"info","message":"Otp saved","timestamp":"2024-12-01T10:05:59.267Z"}[39m
-[31m{"code":"ERR_HTTP_HEADERS_SENT","level":"error","timestamp":"2024-12-01T14:52:05.423Z"}[39m
-[31m{"code":"ERR_HTTP_HEADERS_SENT","level":"error","timestamp":"2024-12-01T14:59:23.053Z"}[39m
-[31m{"code":"ERR_HTTP_HEADERS_SENT","level":"error","timestamp":"2024-12-01T15:22:52.495Z"}[39m
+[31m{"level":"error","message":"password authentication failed for user \"postgres\"","timestamp":"2024-12-02T09:34:34.557Z"}[39m
+[31m{"level":"error","message":"alter table \"address\" add constraint \"address_customer_id_foreign\" foreign key (\"customer_id\") references \"customer\" (\"id\") on update CASCADE on delete CASCADE - relation \"customer\" does not exist","timestamp":"2024-12-02T09:35:05.274Z"}[39m
+[32m{"level":"info","message":"Table yaratildi","timestamp":"2024-12-02T09:35:55.557Z"}[39m
+[32m{"level":"info","message":"Table allaqachon yaratilgan","timestamp":"2024-12-02T09:36:06.432Z"}[39m
+[32m{"level":"info","message":"Table allaqachon yaratilgan","timestamp":"2024-12-02T09:45:01.023Z"}[39m
+[32m{"level":"info","message":"Table allaqachon yaratilgan","timestamp":"2024-12-02T09:45:01.026Z"}[39m
+[32m{"level":"info","message":"Table allaqachon yaratilgan","timestamp":"2024-12-02T09:51:41.820Z"}[39m
+[32m{"level":"info","message":"Table allaqachon yaratilgan","timestamp":"2024-12-02T09:51:41.824Z"}[39m
+[32m{"level":"info","message":"Table yaratildi","timestamp":"2024-12-02T09:57:00.597Z"}[39m
+[31m{"level":"error","message":"alter table \"order_items\" add constraint \"order_items_order_id_foreign\" foreign key (\"order_id\") references \"orders\" (\"id\") on update CASCADE on delete CASCADE - relation \"orders\" does not exist","timestamp":"2024-12-02T10:11:05.398Z"}[39m
+[32m{"level":"info","message":"Table yaratildi","timestamp":"2024-12-02T10:11:27.203Z"}[39m
+[32m{"level":"info","message":"Table allaqachon yaratilgan","timestamp":"2024-12-02T10:11:31.417Z"}[39m
+[32m{"level":"info","message":"Table allaqachon yaratilgan","timestamp":"2024-12-02T10:11:43.021Z"}[39m
+[32m{"level":"info","message":"Table allaqachon yaratilgan","timestamp":"2024-12-02T10:11:43.025Z"}[39m
+[32m{"level":"info","message":"Table yaratildi","timestamp":"2024-12-02T10:13:55.124Z"}[39m
+[32m{"level":"info","message":"Table allaqachon yaratilgan","timestamp":"2024-12-02T10:14:00.557Z"}[39m
+[32m{"level":"info","message":"Table yaratildi","timestamp":"2024-12-02T10:15:30.308Z"}[39m
+[31m{"level":"error","message":"insert into \"otp\" (\"otp\") values ($1) - relation \"otp\" does not exist","timestamp":"2024-12-02T10:45:38.633Z"}[39m
+[31m{"level":"error","message":"insert into \"otp\" (\"otp\") values ($1) - relation \"otp\" does not exist","timestamp":"2024-12-02T11:11:51.142Z"}[39m
