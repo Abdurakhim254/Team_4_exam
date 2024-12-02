@@ -20,13 +20,13 @@ orderRouter.post(
 orderRouter.put(
   "/:id",
   authGuard,
-  roleGuard(["admin", "manager"]),
+  // roleGuard(["admin", "manager"]),
   UpdateCheckOrderDatamiddleware(orderValidationSchema),
   orderObj.updateOrderByIdCon
 );
 orderRouter.delete(
   "/:id",
   authGuard,
-  roleGuard(["admin", "manager"]),
+  // roleGuard(["admin", "manager"]),
   orderObj.deleteOrderByIdCon
 );

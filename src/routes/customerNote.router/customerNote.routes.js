@@ -13,7 +13,7 @@ customerNoteRouter.get("/", customerNoteObj.getAllCustomerNotesCon);
 customerNoteRouter.get("/:id", customerNoteObj.getCustomerNoteByIdCon);
 customerNoteRouter.post(
   "/",
-  authGuard,roleGuard(["admin", "manager"]),
+  authGuard,
   CheckCustomerNotesDatamiddleware(customerNotesValidationSchema),
   customerNoteObj.createCustomerNoteCon
 );

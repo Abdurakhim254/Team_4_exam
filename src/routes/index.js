@@ -1,1 +1,1 @@
-export * from "./main.routes.js"
+export * from "./main.routes.js";
