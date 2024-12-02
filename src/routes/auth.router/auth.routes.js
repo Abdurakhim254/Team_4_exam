@@ -11,6 +11,7 @@ import {
 
 export const authRouter = express.Router();
 
+authRouter.get("/all", authObj.getAllCutomersCon);
 authRouter.get("/me", authObj.profileCon);
 authRouter.get("/logout", authObj.logOutCon);
 authRouter.post(

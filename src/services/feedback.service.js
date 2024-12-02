@@ -1,5 +1,5 @@
 import { id } from "../helpers/index.js";
-import { connection } from "../database/index.js";
+import { connection } from "../Database/index.js";
 
 export const getAllFeedbacksService = async () => {
   try {
@@ -44,7 +44,7 @@ export const createFeedbackService = async ({
       content,
     });
 
-    return "Feedback yangilandi";
+    return "Feedback yaratildi";
   } catch (error) {
     return error;
   }
