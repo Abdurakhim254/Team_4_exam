@@ -1,83 +1,40 @@
-import {connection} from "../Database/index.js"
-import {deleteByemail, findByemail} from "./index.js"
+import { connection } from "../Database/index.js";
 
-export const getUserService=async()=>{
+export const findByemail=async(email)=>{
     try {
-        const result=await connection.select("*").from("customer")
-        if(result.length>=1){
-            return result
+        const res=await connection.select("*").table('customer').where({email})
+        if(res.length>=1){
+            return res
         }else{
-            return "Userlar topilmadi"
+            return "Ro'yxatdan o'tishingiz kerak"
         }
     } catch (error) {
         return error.message
     }
 }
 
-
-export const getUserByEmailService=async(email)=>{
+export const deleteByemail=async(email)=>{
     try {
-        const result=await findByemail(email)
-        delete result[0].password
-        return result
+        const res=await connection.select("*").table('customer').where({email})
+        if(res.length>=1){
+            await connection.select("*").table('customer').where({email}).del()
+            return "Akkauntdan Chiqildi"
+        }else{
+            return "O'chiriladigan foydalanuvchi topilmadi"
+        }
     } catch (error) {
         return error.message
     }
 }
 
-export const updateUserService=async({role,first_name,last_name,email,password,phone,date_of_birth,created_at,updated_at})=>{
+export const activateUseraccount=async(email)=>{
     try {
-    const res=await findByemail(email)
+        const is_active=true
+        const res=await connection.select("*").from('customer').where({email}).update({is_active}).returning("*")
         if(res.length>=1){
-            if(role=='admin'){
-                if(res[0].role=='user'){
-                    const result=await connection.select("*").from("customer").where({email}).update({first_name,last_name,email,password,phone,date_of_birth,created_at,updated_at})
-                    return result
-                }else{
-                    return "Siz ushbu userni yangilay olmaysiz"
-                }
-            }else if(role=='manager'){
-                if(res[0].role=='admin' || res[0].role=='user'){
-                    const result=await connection.select("*").from("customer").where({email}).update({first_name,last_name,email,password,phone,date_of_birth,created_at,updated_at})
-                    return result
-                }else{
-                    return "Siz ushbu userni yangilay olmaysiz"
-                }
-            }else{
-                return "Userni Yangilashda xatolik"
-            }
+            return "Akkount Aktivlashtirildi"
         }else{
-            "Yangilandigan User topilmadi"
-        }  
-    } catch (error) {
-        return error.message
-    }
-}
-
-
-export const deleteUserService=async(email,role)=>{
-    try {
-        const res=await findByemail(email)
-        if(res.length>=1){
-            if(role=='admin'){
-                if(res[0].role=='user'){
-                    const result=await deleteByemail(email)
-                    return result
-                }else{
-                    return "Siz ushbu userni o'chira olishga huquqingiz yoq!!!"
-                }
-            }else if(role=='manager'){
-                if(res[0].role=='admin' || res[0].role=='user'){
-                    const result=await deleteByemail(email)
-                    return result
-                }else{
-                    return "Siz ushbu userni o'chira olmaysiz"
-                }
-            }else{
-                return "Userni o'chirishda xatolik"
-            }
-        }else{
-            "O'chiriladigan User topilmadi"
+            return "Aktivlashtiriladigan akkount topilmadi"
         }
     } catch (error) {
         return error.message

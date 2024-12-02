@@ -1,5 +1,5 @@
 import {statusCodes} from "../config/index.js"
-import {authRegisterService,authLoginService,profileService,RefreshtokenService,logOutService,authVerifyService, SendOtpService, forgetPasswordService} from "../services/index.js"
+import {authRegisterService,authLoginService,profileService,RefreshtokenService,logOutService,authVerifyService, SendOtpService} from "../services/index.js"
 
 const ok=statusCodes.ok
 const not_found=statusCodes.not_found
@@ -65,17 +65,6 @@ export const AuthObj={
             res.status(bad).send(error.message)
         }
     },
-
-    ForgetPasswordCon:async function(req,res){
-        try {
-            const {email,password,otp}=req.body
-            const result=await forgetPasswordService({email,password,otp})
-            res.status(ok).send(result)
-        } catch (error) {
-            res.status(bad).send(error.message)
-        }
-    }
-    ,
     RefreshTokenCon:async function(req,res){
         try {
           const [type,token]=req.headers.authorization.split(" ")

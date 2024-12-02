@@ -1,5 +1,5 @@
 import { connection } from "../../Database/index.js";
-import {logger} from "../../utils/logger/logger.js"
+import { logger } from "../../utils/logger/logger.js";
 
 export const createCustomerTable = async () => {
   try {
@@ -10,8 +10,8 @@ export const createCustomerTable = async () => {
           table.string("last_name").notNullable(),
           table.string("email").unique().notNullable(),
           table.string("password"),
-          table.enu("role", ["user", "admin", "manager"]).defaultTo("user"),
-          table.boolean("is_active").defaultTo("false").notNullable(),
+          table.enu("role", ["user", "admin", "manager"]),
+          table.boolean("is_active").defaultTo("false"),
           table.string("phone"),
           table.date("date_of_birth"),
           table.timestamp("created_at").defaultTo(connection.fn.now()),
@@ -25,6 +25,3 @@ export const createCustomerTable = async () => {
     logger.error(error.message);
   }
 };
-
-
-
