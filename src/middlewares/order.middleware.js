@@ -22,10 +22,10 @@ export const CheckOrderDatamiddleware = (schema) => {
 export const UpdateCheckOrderDatamiddleware = (schema) => {
   return (req, res, next) => {
     const { id } = req.params;
+
     const { customer_id, order_date, status, total_amount } = req.body;
 
     const { error } = schema.validate({
-      id,
       customer_id,
       order_date,
       status,

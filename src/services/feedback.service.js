@@ -1,5 +1,5 @@
-import { id } from "../helpers/index.js";
-import { connection } from "../Database/index.js";
+import { createId } from "../helpers/index.js";
+import { connection } from "../database/index.js";
 
 export const getAllFeedbacksService = async () => {
   try {
@@ -37,7 +37,7 @@ export const createFeedbackService = async ({
 }) => {
   try {
     await connection("feedback").insert({
-      id,
+      id: createId,
       customer_id,
       submitted_at,
       feedback_type,
@@ -66,6 +66,7 @@ export const updateFeedbackByIdService = async ({
         .from("feedback")
         .where({ id })
         .update({ customer_id, submitted_at, feedback_type, content });
+
       return "Feedback yangilandi.";
     }
 

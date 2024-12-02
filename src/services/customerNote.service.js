@@ -1,11 +1,11 @@
-import { id } from "../helpers/index.js";
-import { connection } from "../Database/index.js";
+import { createId } from "../helpers/index.js";
+import { connection } from "../database/index.js";
 
 export const getAllCustomerNotesService = async () => {
   try {
     const res = await connection.select("*").from("customer_notes");
 
-    if (res.length >= 1) return res;
+    if (res && res.length >= 1) return res;
 
     return "Customer notelar topilmadi!";
   } catch (error) {
@@ -32,7 +32,7 @@ export const getCustomerNoteByIdService = async (id) => {
 export const createCustomerNoteService = async ({ customer_id, content }) => {
   try {
     await connection("customer_notes").insert({
-      id,
+      id: createId,
       customer_id,
       content,
     });
@@ -54,12 +54,13 @@ export const updateCustomerNoteByIdService = async ({
       .from("customer_notes")
       .where({ id });
 
-    if (result.length >= 1) {
+    if (result && result.length >= 1) {
       await connection
         .select("*")
         .from("customer_notes")
         .where({ id })
         .update({ customer_id, content });
+
       return "Customer note yangilandi.";
     }
 
@@ -78,7 +79,7 @@ export const deleteCustomerNoteByIdService = async (id) => {
       .del()
       .returning("*");
 
-    if (result.length >= 1) return "Customer note o'chirildi.";
+    if (result && result.length >= 1) return "Customer note o'chirildi.";
 
     return "O'chiriladigan customer note topilmadi!";
   } catch (error) {

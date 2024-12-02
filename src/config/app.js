@@ -1,7 +1,7 @@
-import dotenv from "dotenv"
+import dotenv from "dotenv";
 
-dotenv.config()
+dotenv.config();
 
-export const application={
-    port:process.env.PORT
-}
+export const application = {
+  port: process.env.PORT,
+};

@@ -1,5 +1,5 @@
-import { id } from "../helpers/index.js";
-import { connection } from "../Database/index.js";
+import { createId } from "../helpers/index.js";
+import { connection } from "../database/index.js";
 
 export const getAllCustomerInteractionsService = async () => {
   try {
@@ -36,7 +36,7 @@ export const createCustomerInteractionService = async ({
 }) => {
   try {
     await connection("customer_interactions").insert({
-      id,
+      id: createId,
       customer_id,
       type,
       notes,
@@ -60,12 +60,13 @@ export const updateCustomerInteractionByIdService = async ({
       .from("customer_interactions")
       .where({ id });
 
-    if (result.length >= 1) {
+    if (result && result.length >= 1) {
       await connection
         .select("*")
         .from("customer_interactions")
         .where({ id })
         .update({ customer_id, type, notes });
+
       return "Customer interaction yangilandi.";
     }
 
@@ -84,7 +85,7 @@ export const deleteCustomerInteractionByIdService = async (id) => {
       .del()
       .returning("*");
 
-    if (result.length >= 1) return "Customer interaction o'chirildi.";
+    if (result && result.length >= 1) return "Customer interaction o'chirildi.";
 
     return "O'chiriladigan customer interaction topilmadi!";
   } catch (error) {
