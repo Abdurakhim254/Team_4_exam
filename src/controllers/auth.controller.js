@@ -4,6 +4,7 @@ import {
   authLoginService,
   authRegisterService,
   authVerifyService,
+  getAllCustomersService,
   logOutService,
   profileService,
   sendOtpService,
@@ -57,10 +58,20 @@ export const authObj = {
     }
   },
 
+  getAllCutomersCon: async function (req, res) {
+    try {
+      const result = await getAllCustomersService();
+
+      res.status(ok).send(result);
+    } catch (error) {
+      logger.error(error);
+      res.status(bad).send(error.message);
+    }
+  },
+
   profileCon: async function (req, res) {
     try {
       const [type, token] = req.headers.authorization.split(" ");
-
       const result = await profileService([type, token]);
 
       res.status(ok).send(result);

@@ -3,7 +3,7 @@ import { feedbackObj } from "../../controllers/index.js";
 import { authGuard, roleGuard } from "../../Guards/index.js";
 import {
   feedbackValidationSchema,
-  updateFeedbackValidationSchema,
+  updateFeedbackValidationSchema
 } from "../../validations/index.js";
 import {
   checkFeedbackDatamiddleware,

@@ -1,6 +1,5 @@
 import { id } from "../helpers/index.js";
-import { connection } from "../database/index.js";
-
+import { connection } from "../Database/index.js";
 
 export const getAllOrdersService = async () => {
   try {
@@ -16,11 +15,7 @@ export const getAllOrdersService = async () => {
 
 export const getOrderByIdService = async (id) => {
   try {
-    const res = await connection
-      .select("*")
-      .from("orders")
-      .where({ id })
-  
+    const res = await connection.select("*").from("orders").where({ id });
 
     if (res.length >= 1) return res;
 

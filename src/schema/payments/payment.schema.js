@@ -1,5 +1,5 @@
 import { logger } from "../../utils/index.js";
-import { connection } from "../../database/index.js";
+import { connection } from "../../Database/index.js";
 
 export const createPaymenttTable = async () => {
   try {
