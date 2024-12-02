@@ -1,5 +1,5 @@
 import { connection } from "../database/index.js";
-import { createAccessToken, verifyToken, id } from "../helpers/index.js";
+import {createAccesstoken,decode_jwt,id } from "../helpers/index.js";
 import {
   otp,
   sendMail,
@@ -7,9 +7,9 @@ import {
   comparePassword,
 } from "../utils/index.js";
 import {
-  saveOtp,
+  SaveOtp,
   deleteOtp,
-  findByOtp,
+  findByotp,
   findCustomerByEmailService,
   deleteCustomerByEmailService,
   activateCustomerAccountService,
@@ -109,7 +109,7 @@ export const authVerifyService = async ({ otp, email }) => {
     if (result[0].is_active) {
       return "Akkountingiz statusi joyida.";
     } else {
-      const otpData = await findByOtp(otp);
+      const otpData = await findByotp(otp);
       if (otpData) {
         await deleteOtp(otp);
         await activateCustomerAccountService(email);
@@ -158,7 +158,7 @@ export const refreshTokenService = async ([type, token]) => {
     const refReshtoken = token;
     const role = data[0].role;
 
-    const accessToken = createAccessToken(email, role);
+    const accessToken = createAccesstoken(email, role);
 
     return { accessToken, refReshtoken };
   } catch (error) {
