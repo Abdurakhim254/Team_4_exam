@@ -1,4 +1,4 @@
-import { logger } from "../utils/logger/logger.js";
+import { logger } from "../utils/index.js";
 import { statusCodes } from "../config/index.js";
 import {
   createOrderService,
@@ -60,7 +60,9 @@ export const orderObj = {
   updateOrderByIdCon: async function (req, res) {
     try {
       const { id } = req.params;
+
       const { customer_id, order_date, status, total_amount } = req.body;
+
       const result = await updateOrderByIdService({
         id,
         customer_id,

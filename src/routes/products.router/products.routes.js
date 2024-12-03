@@ -4,29 +4,29 @@ import {
   checkProductDatamiddleare,
   UpdatecheckProductDatamiddleare,
 } from "../../middlewares/index.js";
-import { ProductValidationSchema } from "../../validations/index.js";
-import { authGuard, roleGuard } from "../../Guards/index.js";
+import { productValidationSchema } from "../../validations/index.js";
+import { authGuard, roleGuard } from "../../guards/index.js";
 
 export const productsRouter = express.Router();
 
-productsRouter.get("/", productsConttroller.getAllProducts);
-productsRouter.get("/:id", productsConttroller.getProductById);
+productsRouter.get("/", authGuard, productsConttroller.getAllProducts);
+productsRouter.get("/:id", authGuard, productsConttroller.getProductById);
 productsRouter.post(
   "/",
   authGuard,
-  roleGuard(["user", "admin", "manager"]),
-  checkProductDatamiddleare(ProductValidationSchema),
+  checkProductDatamiddleare(productValidationSchema),
   productsConttroller.createProduct
 );
 productsRouter.put(
   "/:id",
-  roleGuard(["user", "admin", "manager"]),
-  UpdatecheckProductDatamiddleare(ProductValidationSchema),
+  authGuard,
+  roleGuard(["admin", "manager"]),
+  UpdatecheckProductDatamiddleare(productValidationSchema),
   productsConttroller.updateProduct
 );
 productsRouter.delete(
   "/:id",
   authGuard,
-  roleGuard(["user", "admin", "manager"]),
+  roleGuard(["admin", "manager"]),
   productsConttroller.deleteProduct
 );

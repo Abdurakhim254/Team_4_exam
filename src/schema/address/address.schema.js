@@ -1,5 +1,5 @@
-import { connection } from "../../Database/index.js";
-import { logger } from "../../utils/logger/logger.js";
+import { logger } from "../../utils/index.js";
+import { connection } from "../../database/index.js";
 
 export const createAddressTable = async () => {
   try {
@@ -26,6 +26,6 @@ export const createAddressTable = async () => {
       logger.info("Table allaqachon yaratilgan");
     }
   } catch (error) {
-    logger.error(error.message);
+    return error;
   }
 };

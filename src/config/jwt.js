@@ -1,8 +1,8 @@
-import dotenv from 'dotenv'
+import dotenv from "dotenv";
 
-dotenv.config()
+dotenv.config();
 
-export const jwt_info={
-    secretkey:process.env.SECRETKEY,
-    expiresIn:process.env.EXPIRESIN
-}
+export const jwt_info = {
+  secretkey: process.env.SECRETKEY,
+  expiresIn: process.env.EXPIRESIN,
+};

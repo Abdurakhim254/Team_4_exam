@@ -1,32 +1,31 @@
 import express from "express";
+import { authGuard, roleGuard } from "../../guards/index.js";
 import { discountsController } from "../../controllers/index.js";
 import {
   CheckdiscountDatamiddleware,
   UpdateCheckdiscountDatamiddleware,
 } from "../../middlewares/index.js";
 import { discountValidationSchema } from "../../validations/index.js";
-import { authGuard, roleGuard } from "../../Guards/index.js";
 
 export const discountRouter = express.Router();
 
-discountRouter.get("/", discountsController.getAllDiscounts);
-discountRouter.get("/:id", discountsController.getDiscountsById);
+discountRouter.get("/", authGuard, discountsController.getAllDiscountsCon);
+discountRouter.get("/:id", authGuard, discountsController.getDiscountsByIdCon);
 discountRouter.post(
   "/",
   authGuard,
-  roleGuard(["user", "admin", "manager"]),
   CheckdiscountDatamiddleware(discountValidationSchema),
-  discountsController.createDiscount
+  discountsController.createDiscountCon
 );
 discountRouter.put(
   "/:id",
-  roleGuard(["user", "admin", "manager"]),
+  roleGuard(["admin", "manager"]),
   UpdateCheckdiscountDatamiddleware(discountValidationSchema),
-  discountsController.updateDiscount
+  discountsController.updateDiscountByIdCon
 );
 discountRouter.delete(
   "/:id",
   authGuard,
-  roleGuard(["user", "admin", "manager"]),
-  discountsController.deleteDiscount
+  roleGuard(["admin", "manager"]),
+  discountsController.deleteDiscountByIdCon
 );

@@ -1,5 +1,5 @@
-import { connection } from "../../Database/index.js";
-import { logger } from "../../utils/logger/logger.js";
+import { logger } from "../../utils/index.js";
+import { connection } from "../../database/index.js";
 
 export const createDiscounttTable = async () => {
   try {
@@ -14,6 +14,7 @@ export const createDiscounttTable = async () => {
             .onUpdate("CASCADE")
             .notNullable(),
           table.string("code").notNullable(),
+          table.string("description").notNullable(),
           table.enu("discount_type", ["percentage", "fixed_amount"]),
           table.date("expiration_date").defaultTo(connection.fn.now());
       });
@@ -22,6 +23,6 @@ export const createDiscounttTable = async () => {
       logger.info("Table allaqachon yaratilgan");
     }
   } catch (error) {
-    logger.error(error.message);
+    return error;
   }
 };

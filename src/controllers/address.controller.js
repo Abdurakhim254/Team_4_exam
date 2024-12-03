@@ -3,8 +3,8 @@ import {
   getAllAdressesService,
   getAddressByIdService,
   createAddressService,
-  updateAddressService,
-  deleteAddressService,
+  updateAddressByIdService,
+  deleteAddressByIdService,
 } from "../services/index.js";
 
 const ok = statusCodes.ok;
@@ -13,24 +13,29 @@ const medium = statusCodes.medium;
 const bad = statusCodes.bad;
 const created = statusCodes.created;
 
-export const addressController = {
+export const addressObj = {
   getAlladdress: async function (req, res) {
     try {
       const result = await getAllAdressesService();
+
       res.status(ok).send(result);
     } catch (error) {
       res.status(bad).send(error.message);
     }
   },
+
   getAdressById: async function (req, res) {
     try {
       const { id } = req.params;
+
       const result = await getAddressByIdService(id);
+
       res.status(ok).send(result);
     } catch (error) {
       res.status(bad).send(error.message);
     }
   },
+
   createAddress: async function (req, res) {
     try {
       const {
@@ -43,6 +48,7 @@ export const addressController = {
         zip_code,
         country,
       } = req.body;
+
       const result = await createAddressService({
         customer_id,
         address_type,
@@ -53,11 +59,13 @@ export const addressController = {
         zip_code,
         country,
       });
+
       res.status(created).send(result);
     } catch (error) {
       res.status(bad).send(error.message);
     }
   },
+
   updateAddress: async function (req, res) {
     try {
       const { id } = req.params;
@@ -71,7 +79,8 @@ export const addressController = {
         zip_code,
         country,
       } = req.body;
-      const result = await updateAddressService({
+
+      const result = await updateAddressByIdService({
         id,
         address_type,
         address_line_1,
@@ -81,15 +90,19 @@ export const addressController = {
         zip_code,
         country,
       });
+
       res.status(ok).send(result);
     } catch (error) {
       res.status(bad).send(error.message);
     }
   },
+
   deleteAddress: async function (req, res) {
     try {
       const { id } = req.params;
-      const result = await deleteAddressService(id);
+
+      const result = await deleteAddressByIdService(id);
+
       res.status(ok).send(result);
     } catch (error) {
       res.status(bad).send(error.message);

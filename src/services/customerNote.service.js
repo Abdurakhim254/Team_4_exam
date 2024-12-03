@@ -1,9 +1,9 @@
-import { id } from "../helpers/index.js";
-import { connection } from "../Database/index.js";
+import { createId } from "../helpers/index.js";
+import { connection } from "../database/index.js";
 
 export const getAllCustomerNotesService = async () => {
   try {
-    const res = await connection.select("*").from("custom_notes");
+    const res = await connection.select("*").from("customer_notes");
 
     if (res.length >= 1) return res;
 
@@ -17,13 +17,13 @@ export const getCustomerNoteByIdService = async (id) => {
   try {
     const res = await connection
       .select("*")
-      .from("custom_notes")
+      .from("customer_notes")
       .where({ id })
-    
+      .first();
 
-    if (res.length >= 1) return res;
+    if (!res) return "Customer note topilmadi!";
 
-    return "Customer note topilmadi!";
+    return res;
   } catch (error) {
     return error;
   }
@@ -31,8 +31,8 @@ export const getCustomerNoteByIdService = async (id) => {
 
 export const createCustomerNoteService = async ({ customer_id, content }) => {
   try {
-    await connection("custom_notes").insert({
-      id,
+    await connection("customer_notes").insert({
+      id: createId,
       customer_id,
       content,
     });
@@ -51,21 +51,22 @@ export const updateCustomerNoteByIdService = async ({
   try {
     const result = await connection
       .select("*")
-      .from("custom_notes")
+      .from("customer_notes")
       .where({ id });
 
-    if (result.length >= 1) {
+    if (result && result.length >= 1) {
       await connection
         .select("*")
-        .from("custom_notes")
+        .from("customer_notes")
         .where({ id })
         .update({ customer_id, content });
+
       return "Customer note yangilandi.";
     }
 
     return "Yangilanadigan customer note topilmadi!";
   } catch (error) {
-    return error.message;
+    return error;
   }
 };
 
@@ -73,12 +74,12 @@ export const deleteCustomerNoteByIdService = async (id) => {
   try {
     const result = await connection
       .select("*")
-      .table("custom_notes")
+      .table("customer_notes")
       .where({ id })
       .del()
       .returning("*");
 
-    if (result.length >= 1) return "Customer note o'chirildi.";
+    if (result && result.length >= 1) return "Customer note o'chirildi.";
 
     return "O'chiriladigan customer note topilmadi!";
   } catch (error) {

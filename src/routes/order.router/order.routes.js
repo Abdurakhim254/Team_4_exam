@@ -1,7 +1,10 @@
 import express from "express";
 import { orderObj } from "../../controllers/index.js";
-import { authGuard, roleGuard } from "../../Guards/index.js";
-import { orderValidationSchema } from "../../validations/index.js";
+import { authGuard, roleGuard } from "../../guards/index.js";
+import {
+  createOrderValidationSchema,
+  updateOrderValidationSchema,
+} from "../../validations/index.js";
 import {
   CheckOrderDatamiddleware,
   UpdateCheckOrderDatamiddleware,
@@ -9,24 +12,24 @@ import {
 
 export const orderRouter = express.Router();
 
-orderRouter.get("/", orderObj.getAllOrdersCon);
-orderRouter.get("/:id", orderObj.getOrderByIdCon);
+orderRouter.get("/", authGuard, orderObj.getAllOrdersCon);
+orderRouter.get("/:id", authGuard, orderObj.getOrderByIdCon);
 orderRouter.post(
   "/",
   authGuard,
-  CheckOrderDatamiddleware(orderValidationSchema),
+  CheckOrderDatamiddleware(createOrderValidationSchema),
   orderObj.createOrderCon
 );
 orderRouter.put(
   "/:id",
   authGuard,
-  roleGuard(["admin", "manager"]),
-  UpdateCheckOrderDatamiddleware(orderValidationSchema),
+  // roleGuard(["admin", "manager"]),
+  UpdateCheckOrderDatamiddleware(updateOrderValidationSchema),
   orderObj.updateOrderByIdCon
 );
 orderRouter.delete(
   "/:id",
   authGuard,
-  roleGuard(["admin", "manager"]),
+  // roleGuard(["admin", "manager"]),
   orderObj.deleteOrderByIdCon
 );

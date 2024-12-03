@@ -1,13 +1,19 @@
-import { connection } from "../Database/index.js";
-import { hashshpassword } from "../utils/hash/hashspassword.js";
-import { comparepassword } from "../utils/compare/compare.password.js";
-import { createAccesstoken } from "../helpers/index.js";
-import { findByemail, deleteByemail, activateUseraccount } from "./index.js";
-import { decode_jwt } from "../helpers/index.js";
-import { id } from "../helpers/index.js";
-import { sendMail } from "../utils/sendOtp/send.mail.js";
-import { otp } from "../utils/otp/otp.generator.js";
-import { findByotp, SaveOtp, deleteOtp } from "./Otp.service.js";
+import { connection } from "../database/index.js";
+import { createAccessToken, decode_jwt, createId } from "../helpers/index.js";
+import {
+  otp,
+  sendMail,
+  hashPassword,
+  comparePassword,
+} from "../utils/index.js";
+import {
+  saveOtp,
+  deleteOtp,
+  findByOtp,
+  findCustomerByEmailService,
+  deleteCustomerByEmailService,
+  activateCustomerAccountService,
+} from "./index.js";
 
 export const authRegisterService = async ({
   first_name,
@@ -17,48 +23,37 @@ export const authRegisterService = async ({
   role,
   phone,
   date_of_birth,
-  created_at,
-  updated_at,
 }) => {
   try {
-    if (role || created_at || updated_at) {
-      var data = {
-        first_name,
-        last_name,
-        email,
-        password,
-        role,
-        phone,
-        date_of_birth,
-        created_at,
-        updated_at,
-      };
-    } else {
-      var data = {
-        first_name,
-        last_name,
-        email,
-        password,
-        phone,
-        date_of_birth,
-      };
-    }
+    var data = {
+      first_name,
+      last_name,
+      email,
+      password,
+      role,
+      phone,
+      date_of_birth,
+    };
+
     const result = await connection
       .select("*")
       .table("customer")
       .where({ email });
-    if (result.length >= 1) {
-      return "Foydalanuvchi allaqachon ro'yxatdan o'tgan";
+
+    if (!result || result.length >= 1) {
+      return "Foydalanuvchi allaqachon ro'yxatdan o'tgan!";
     } else {
-      data.password = await hashshpassword(data.password);
-      data.id = id;
+      data.password = await hashPassword(password);
+      data.id = createId;
+
       await connection("customer").insert(data);
       await sendMail(email, otp);
-      await SaveOtp(otp);
-      return "Ro'yxatdan o'tdingiz";
+      await saveOtp(otp);
+
+      return "Ro'yxatdan o'tdingiz.";
     }
   } catch (error) {
-    return error.message;
+    return error;
   }
 };
 
@@ -69,95 +64,107 @@ export const authLoginService = async ({ email, password }) => {
       .table("customer")
       .where({ email })
       .returning("*");
+
     if (result.length >= 1) {
-      const isequal = await comparepassword(password, result[0].password);
+      const isequal = await comparePassword(password, result[0].password);
+
       if (isequal) {
-        if (result[0].is_active) {
-          const accessToken = await createAccesstoken(email, result[0].role);
+        if (!result[0].is_active) {
+          // await connection
+          //   .table("customer")
+          //   .where({ email })
+          //   .update({ is_active: true });
+          await activateCustomerAccountService(email);
+
+          const accessToken = await createAccessToken(email, result[0].role);
           delete result[0].password;
+
           return { result, accessToken };
         } else {
-          return "Account statusi active emas";
+          return "Account statusi active!";
         }
-      } else {
-        return "Ro'yxatdan o'tishingiz kerak";
       }
     } else {
       return "Ro'yxatdan o'tishingiz kerak";
     }
   } catch (error) {
-    return error.message;
+    return error;
   }
 };
 
 export const authVerifyService = async ({ otp, email }) => {
   try {
-    const result = await findByemail(email);
+    const result = await findCustomerByEmailService(email);
+
     if (result[0].is_active) {
-      return "Accountingiz Statusi Joyida";
+      return "Akkountingiz statusi joyida.";
     } else {
-      const OtpData = await findByotp(otp);
-      if (OtpData) {
+      const otpData = await findByOtp(otp);
+      if (otpData) {
         await deleteOtp(otp);
-        await activateUseraccount(email);
-        return "Accountingiz Aktivlashtirildi";
+        await activateCustomerAccountService(email);
+
+        return "Akkountingiz aktivlashtirildi";
       } else {
-        return "Otp kodni Xato kiritdintiz";
+        return "Otp kodni xato kiritdingiz!";
       }
     }
   } catch (error) {
-    return error.message;
+    return error;
   }
 };
 
-export const SendOtpService = async (email) => {
+export const sendOtpService = async (email) => {
   try {
     await sendMail(email, otp);
-    await SaveOtp(otp);
-    return "Emailingizga qarang";
+    await saveOtp(otp);
+
+    return "Email pochtangizga qarang!";
   } catch (error) {
-    return error.message;
+    return error;
   }
 };
 
 export const profileService = async ([type, token]) => {
   try {
-    if (!type == "Bearer" || !token) {
-      return "Unauthorization";
-    }
+    if (type != "Bearer" || !token) return "Unauthorization";
+
     const email = await decode_jwt(token);
-    const result = await findByemail(email);
+    const result = await findCustomerByEmailService(email);
+
     return result;
   } catch (error) {
-    return error.message;
+    return error;
   }
 };
 
-export const RefreshtokenService = async ([type, token]) => {
+export const refreshTokenService = async ([type, token]) => {
   try {
-    if (!type == "Bearer" || !token) {
-      return "Unauthorization";
-    }
+    if (!type == "Bearer" || !token) return "Unauthorization";
+
     const email = await decode_jwt(token);
-    const data = await findByemail(email);
+    const data = await findCustomerByEmailService(email);
+
     const refReshtoken = token;
     const role = data[0].role;
-    const accessToken = createAccesstoken(email, role);
+
+    const accessToken = createAccessToken(email, role);
+
     return { accessToken, refReshtoken };
   } catch (error) {
-    return error.message;
+    return error;
   }
 };
 
 export const logOutService = async ([type, token]) => {
   try {
-    if (!type == "Bearer" || !token) {
-      return "Unauthorization";
-    }
+    if (!type == "Bearer" || !token) return "Unauthorization";
+
     const email = await decode_jwt(token);
-    const result = await deleteByemail(email);
+    const result = await deleteCustomerByEmailService(email);
+
     return result;
   } catch (error) {
-    return error.message;
+    return error;
   }
 };

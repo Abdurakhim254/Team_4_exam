@@ -1,13 +1,29 @@
-import express from "express"
-import {AuthObj} from "../../controllers/index.js"
-import {AuthDatamiddleware,AuthLoginmiddleware} from "../../middlewares/index.js"
-import {authRegisterValidationSchema,authLoginValidationSchema} from "../../validations/index.js"
-export const authRouter=express.Router()
+import express from "express";
+import { authObj } from "../../controllers/index.js";
+import {
+  AuthDatamiddleware,
+  AuthLoginmiddleware,
+} from "../../middlewares/index.js";
+import {
+  authRegisterValidationSchema,
+  authLoginValidationSchema,
+} from "../../validations/index.js";
 
-authRouter.post("/signUp",AuthDatamiddleware(authRegisterValidationSchema),AuthObj.RegisterCon)
-authRouter.post("/signIn",AuthLoginmiddleware(authLoginValidationSchema),AuthObj.LoginCon)
-authRouter.get("/me",AuthObj.ProfileCon)
-authRouter.post("/verify-otp",AuthObj.VerifyCon)
-authRouter.post("/send-otp",AuthObj.SendOtpCon)
-authRouter.get("/logout",AuthObj.LogOutCon)
-authRouter.post("/refresh-token",AuthObj.RefreshTokenCon)
+export const authRouter = express.Router();
+
+authRouter.get("/all", authObj.getAllCutomersCon);
+authRouter.get("/me", authObj.profileCon);
+authRouter.get("/logout", authObj.logOutCon);
+authRouter.post(
+  "/signUp",
+  AuthDatamiddleware(authRegisterValidationSchema),
+  authObj.registerCon
+);
+authRouter.post(
+  "/signIn",
+  AuthLoginmiddleware(authLoginValidationSchema),
+  authObj.loginCon
+);
+authRouter.post("/verify-otp", authObj.verifyCon);
+authRouter.post("/send-otp", authObj.sendOtpCon);
+authRouter.post("/refresh-token", authObj.refreshTokenCon);

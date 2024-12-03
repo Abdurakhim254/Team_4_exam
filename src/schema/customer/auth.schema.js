@@ -1,5 +1,5 @@
-import { connection } from "../../Database/index.js";
-import { logger } from "../../utils/logger/logger.js";
+import { logger } from "../../utils/index.js";
+import { connection } from "../../database/index.js";
 
 export const createCustomerTable = async () => {
   try {
@@ -10,7 +10,7 @@ export const createCustomerTable = async () => {
           table.string("last_name").notNullable(),
           table.string("email").unique().notNullable(),
           table.string("password"),
-          table.enu("role", ["user", "admin", "manager"]),
+          table.enu("role", ["user", "admin", "manager"]).defaultTo("user"),
           table.boolean("is_active").defaultTo("false"),
           table.string("phone"),
           table.date("date_of_birth"),
@@ -22,6 +22,6 @@ export const createCustomerTable = async () => {
       logger.info("Table allaqachon yaratilgan");
     }
   } catch (error) {
-    logger.error(error.message);
+    return error;
   }
 };

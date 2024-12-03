@@ -5,17 +5,21 @@ import {
   UpdatecheckOrderItemsDatamiddleware,
 } from "../../middlewares/index.js";
 import { orderItemsValidationSchema } from "../../validations/index.js";
-import { authGuard, roleGuard } from "../../Guards/index.js";
+import { authGuard, roleGuard } from "../../guards/index.js";
 
 export const order_itemsRouter = express.Router();
 
-order_itemsRouter.get("/", order_itemsController.getAllOrder_items);
-order_itemsRouter.get("/:id", order_itemsController.getOrder_itemById);
+order_itemsRouter.get("/", authGuard, order_itemsController.getAllOrder_items);
+order_itemsRouter.get(
+  "/:id",
+  authGuard,
+  order_itemsController.getOrder_itemById
+);
 order_itemsRouter.post(
   "/",
   authGuard,
-  roleGuard(["user", "admin", "manager"]),
-  checkOrderItemsDatamiddleware(orderItemsValidationSchema),
+  // roleGuard(["user", "admin", "manager"]),
+  // checkOrderItemsDatamiddleware(orderItemsValidationSchema),
   order_itemsController.createOrder_item
 );
 order_itemsRouter.put(
